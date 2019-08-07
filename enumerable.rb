@@ -17,24 +17,24 @@ module Enumerable
 
   def my_select
     result = []
-    my_each{ |element| result << element if yield(element)}
+    my_each { |element| result << element if yield(element) }
   end
 
   def my_all
-    flag=true
-    my_each{ |element| flag = flag && yield(element)}
+    flag = true
+    my_each { |element| flag &&= yield(element) }
     flag
   end
 
   def my_any
     flag = false
-    my_each{ |element| flag = flag || yield(element)}
+    my_each { |element| flag ||= yield(element) }
     flag
   end
 
   def my_none
     flag = false
-    self.my_each { |element| flag = flag || yield(element) }
+    my_each { |element| flag ||= yield(element) }
     !flag
   end
 
@@ -42,37 +42,34 @@ module Enumerable
     count = 0
     my_each { |element| count += 1 if yield(element) }
     count
-  end  
+  end
 
   def my_map(proc = nil)
     result = []
     my_each do |element|
       if proc
-        result <<  proc.call(element)         
+        result << proc.call(element)
       else
         result << yield(element)
       end
     end
     result
-  end  
+  end
 
-  def my_inject(i)
-    res = i || 0
-    self.my_each{ |element| res = yield(res,element)}
+  def my_inject(initValue)
+    res = initValue || 0
+    my_each { |element| res = yield(res, element) }
     res
   end
 
 end
-
-
-
-  arr=[1,2,3,4]
-  arr.my_each{|element| puts element}
-  arr.my_each_with_index{|index,element| puts "index: #{index} for #{element}"}
+arr=[1,2,3,4]
+arr.my_each { |element| puts element }
+arr.my_each_with_index{|index,element| puts "index: #{index} for #{element}"}
 
 
 def multiply_els(arr)
-  arr.my_inject(1){|res,ele| res*ele}
+  arr.my_inject(1) { |res,ele| res*ele }
 end
 
 puts multiply_els([2,4,5])
