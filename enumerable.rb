@@ -1,4 +1,4 @@
-module Enumerable
+module Enumerable #Modulenumerablee for duplicate 
   def my_each
     i = 0
     while i < length
@@ -47,7 +47,7 @@ module Enumerable
   def my_map(proc = nil)
     result = []
     my_each do |element|
-      proc ? result << proc.call(element) : result << yield(element)
+      result = proc ? result << proc.call(element) : result << yield(element)
     end
     result
   end
@@ -68,4 +68,4 @@ puts multiply_els([2, 4, 5])
 proc = proc do |element|
   element.upcase
 end
-puts ["hi", "hey"].my_map(proc)
+puts ['hi', 'hey'].my_map(proc)
