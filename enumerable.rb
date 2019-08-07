@@ -49,7 +49,8 @@ module Enumerable
   def my_map(proc = nil)
     result = []
     my_each do |element|
-      result << if proc
+      result << 
+      if proc
         proc.call(element) 
       else
         yield(element)
