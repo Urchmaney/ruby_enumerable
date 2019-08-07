@@ -57,17 +57,15 @@ module Enumerable
     my_each { |element| res = yield(res, element) }
     res
   end
-
 end
-arr=[1,2,3,4]
+arr = [1, 2, 3, 4]
 arr.my_each { |element| puts element }
-arr.my_each_with_index {|index, element| puts "index: #{index} for #{element}" }
+arr.my_each_with_index { |index, element| puts "index: #{index} for #{element}" }
 def multiply_els(arr)
   arr.my_inject(1) { |res, ele| res * ele }
 end
-puts multiply_els([2,4,5])  
-proc = Proc.new{
-  |element| 
+puts multiply_els([2, 4, 5])
+proc = proc do |element|
   element.upcase
-}
-puts ["hi","hey"].my_map(proc)
+end
+puts ["hi", "hey"].my_map(proc)
