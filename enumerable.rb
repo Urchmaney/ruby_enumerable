@@ -70,4 +70,4 @@ puts multiply_els([2, 4, 5])
 proc = proc do |element|
   element.upcase
 end
-puts %w(hi hey).my_map(proc)
+puts %w[hi hey].my_map(proc)
