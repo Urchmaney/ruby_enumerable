@@ -47,17 +47,13 @@ module Enumerable
   def my_map(proc = nil)
     result = []
     my_each do |element|
-      if proc
-        result << proc.call(element)
-      else
-        result << yield(element)
-      end
+      proc ? result << proc.call(element) : result << yield(element)
     end
     result
   end
 
-  def my_inject(initValue)
-    res = initValue || 0
+  def my_inject(init_value)
+    res = init_value || 0
     my_each { |element| res = yield(res, element) }
     res
   end
@@ -65,16 +61,12 @@ module Enumerable
 end
 arr=[1,2,3,4]
 arr.my_each { |element| puts element }
-arr.my_each_with_index{|index,element| puts "index: #{index} for #{element}"}
-
-
+arr.my_each_with_index {|index, element| puts "index: #{index} for #{element}" }
 def multiply_els(arr)
-  arr.my_inject(1) { |res,ele| res*ele }
+  arr.my_inject(1) { |res, ele| res * ele }
 end
-
-puts multiply_els([2,4,5])
-  
-proc=Proc.new{
+puts multiply_els([2,4,5])  
+proc = Proc.new{
   |element| 
   element.upcase
 }
