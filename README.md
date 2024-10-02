@@ -1,5 +1,5 @@
 # Enumerables (Custom)
-Replicating enumerable methods of ruby language
+Replicating enumerable methods of ruby language just to understand the language.
 
 Used:
 - Ruby
