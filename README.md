@@ -1,4 +1,4 @@
-# bubble_sort
+# Enumerables (Custom)
 Replicating enumerable methods of ruby language
 
 Used:
